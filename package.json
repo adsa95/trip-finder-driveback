@@ -1,0 +1,24 @@
+{
+  "name": "trip-finder-driveback",
+  "version": "0.1.0",
+  "description": "DriveBack provider for trip-finder",
+  "main": "DriveBackProvider.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adsa95/trip-finder-driveback.git"
+  },
+  "author": "Adam Sandström <adsa95@gmail.com> (www.adsa.se)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adsa95/trip-finder-driveback/issues"
+  },
+  "homepage": "https://github.com/adsa95/trip-finder-driveback#readme",
+  "dependencies": {
+    "moment": "^2.17.1",
+    "request": "^2.80.0",
+    "trip-finder": "^0.1.0"
+  }
+}
