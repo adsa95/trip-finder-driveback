@@ -10,7 +10,7 @@
 
 let TripFinder = require('trip-finder');
 let request = require('request');
-let moment = require('moment');
+let moment = require('moment-timezone');
 
 class DriveBackProvider{
 	static fetch(){
@@ -25,8 +25,8 @@ class DriveBackProvider{
 				for (var i = 0; i < body.length; i++) {
 					let trip = body[i];
 					let from = DriveBackProvider.parseLocation(trip.from_station);
-					let start = moment(trip.first_pickup);
-					let end = moment(trip.last_deliver);
+					let start = DriveBackProvider.parseMoment(trip.first_pickup);
+					let end = DriveBackProvider.parseMoment(trip.last_deliver);
 					let vehicle = DriveBackProvider.parseVehicle(trip.vehicle);
 
 					for (var j = 0; j < trip.to_stations.length; j++) {
@@ -47,6 +47,14 @@ class DriveBackProvider{
 			    resolve(trips);
 			});
 		});
+	}
+
+	static parseMoment(time){
+		// timestamps from API indicate GMT but is actually local, Swedish timezone
+		let m = moment(time);
+		m.tz('Europe/Stockholm');
+		m.add(-m.utcOffset(), 'minutes');
+		return m;
 	}
 
 	static parseVehicle(json){
