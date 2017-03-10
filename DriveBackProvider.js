@@ -35,7 +35,7 @@ class DriveBackProvider{
 						if(ids.indexOf(idstring) == -1){
 							ids.push(idstring);
 
-							let url = 'https://driveback.se/resor' + trip.id + '/boka/' + trip.to_stations[j].id;
+							let url = 'https://driveback.se/resor/' + trip.id + '/boka/' + trip.to_stations[j].id;
 							let to = DriveBackProvider.parseLocation(trip.to_stations[j]);
 							trips.push(new TripFinder.classes.Trip('DriveBack', from, to, vehicle, start, end, url));
 						}
