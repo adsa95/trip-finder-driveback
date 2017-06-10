@@ -29,6 +29,10 @@ class DriveBackProvider{
 					let end = DriveBackProvider.parseMoment(trip.last_deliver);
 					let vehicle = DriveBackProvider.parseVehicle(trip.vehicle);
 
+					if(end.isBefore(moment())){
+						continue;
+					}
+
 					for (var j = 0; j < trip.to_stations.length; j++) {
 						let idstring = trip.id + '.' + trip.to_stations[j].id;
 
